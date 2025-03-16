@@ -1,7 +1,7 @@
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { createStore, applyMiddleware, Middleware } from "redux";
 import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
-import { watchFetchUsers } from "./sagas/rootSaga";
+import { rootSaga } from "./sagas/rootSaga";
 import { rootReducer } from "./rootReducer";
 
 const sagaMiddleware: SagaMiddleware = createSagaMiddleware();
@@ -19,8 +19,7 @@ const store = createStore(
   //compose(applyMiddleware(...middleware)) // Sans Redux DevTools
 );
 
-// Lancer les sagas, permet de démarrer l'exécution des sagas.
-sagaMiddleware.run(watchFetchUsers);
+sagaMiddleware.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

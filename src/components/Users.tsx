@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as usersActions from "../redux/reducers/usersActions";
 import { AppDispatch, RootState } from "../redux/store";
+import AddUser from "./AddUser";
 
 export default function Users() {
   const dispatch: AppDispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function Users() {
   return (
     <div>
       <h1>Users</h1>
+      <AddUser />
       <ul>
         {data?.users.map((user) => (
           <li key={user.id}>{user.firstName}</li>
